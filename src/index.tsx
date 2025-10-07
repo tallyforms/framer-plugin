@@ -1,7 +1,7 @@
 import './globals.css';
 
-import { framer } from 'framer-plugin';
-import { useCallback, useState } from 'react';
+import { CanvasNode, framer, isFrameNode } from 'framer-plugin';
+import { useCallback, useEffect, useState } from 'react';
 import { FramerPlugin } from '@triozer/framer-toolbox';
 import {
   SegmentedControl,
@@ -15,11 +15,22 @@ enum Config {
   BaseUrl = 'https://tally.so',
 }
 
+function useSelection() {
+  const [selection, setSelection] = useState<CanvasNode[]>([]);
+
+  useEffect(() => {
+    return framer.subscribeToSelection(setSelection);
+  }, []);
+
+  return selection;
+}
+
 export default function App() {
   const [formUrl, setFormUrl] = useState('');
   const [showTitle, setShowTitle] = useState(false);
   const [alignLeft, setAlignLeft] = useState(true);
   const [showBackground, setShowBackground] = useState(false);
+  const selection = useSelection();
 
   const handleAddTally = useCallback(
     async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -29,7 +40,7 @@ export default function App() {
         return;
       }
 
-      await framer.addComponentInstance({
+      const component = await framer.addComponentInstance({
         url: Config.ComponentUrl,
         attributes: {
           controls: {
@@ -41,9 +52,21 @@ export default function App() {
         },
       });
 
+      // Place the component in the selected frame
+      if (framer.isAllowedTo('setParent')) {
+        for (const node of selection) {
+          if (!isFrameNode(node)) {
+            continue;
+          }
+
+          await framer.setParent(component.id, node.id);
+          break;
+        }
+      }
+
       framer.closePlugin('Form embedded successfully');
     },
-    [formUrl, showTitle, alignLeft, showBackground],
+    [formUrl, showTitle, alignLeft, showBackground, selection],
   );
 
   return (
