@@ -32,4 +32,4 @@ npm run dev
 
 ### Framer
 
-Follow the [quick start guide](https://www.framer.com/developers/plugins-quick-start) to view how to preview the plugin in Framer.
+Follow the [quick start guide](https://www.framer.com/developers/plugins-quick-start) to see how to preview the plugin in Framer.
