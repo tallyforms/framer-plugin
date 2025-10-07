@@ -25,6 +25,10 @@ export default function App() {
     async (e: React.MouseEvent<HTMLButtonElement>) => {
       e.preventDefault();
 
+      if (!framer.isAllowedTo('addComponentInstance')) {
+        return;
+      }
+
       await framer.addComponentInstance({
         url: Config.ComponentUrl,
         attributes: {
