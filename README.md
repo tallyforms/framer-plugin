@@ -29,3 +29,7 @@ Then, run the development server:
 ```bash
 npm run dev
 ```
+
+### Framer
+
+Follow the [quick start guide](https://www.framer.com/developers/plugins-quick-start) to view how to preview the plugin in Framer.
