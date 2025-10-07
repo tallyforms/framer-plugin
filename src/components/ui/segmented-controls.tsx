@@ -150,7 +150,7 @@ export function SegmentedControlItems({ children, className }: SegmentedControlI
       )}>
       {children}
       <motion.div
-        className="absolute bg-white dark:bg-neutral-600 rounded-md z-0 shadow-md"
+        className="absolute bg-white dark:bg-neutral-900 rounded-md z-0 shadow-md"
         initial={animateX}
         animate={animateX}
         style={indicatorDimensions}
@@ -197,7 +197,7 @@ export function SegmentedControlItem<Value>({
         'relative flex justify-center items-center text-center w-full cursor-pointer rounded-md transition-colors duration-200 z-10',
         'hover:opacity-80',
         {
-          'text-accent dark:text-white !font-semibold': isSelected,
+          'text-accent !font-semibold': isSelected,
         },
         className,
       )}>
