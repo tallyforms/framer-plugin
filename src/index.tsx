@@ -40,6 +40,8 @@ export default function App() {
           },
         },
       });
+
+      framer.closePlugin('Form embedded successfully');
     },
     [formUrl, showTitle, alignLeft, showBackground],
   );
