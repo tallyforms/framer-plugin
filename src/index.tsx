@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/segmented-controls';
 
 enum Config {
-  ComponentUrl = 'https://framer.com/m/TallyForms-JClE.js',
+  ComponentUrl = 'https://framer.com/m/TallyForms-gRm5.js',
   BaseUrl = 'https://tally.so',
 }
 
