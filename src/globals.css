@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 @import 'tailwindcss';
+
+@custom-variant dark (&:where([data-framer-theme="dark"], [data-framer-theme="dark"] *));
 
 main {
   @apply px-4 pb-4 h-full gap-4 flex flex-col items-start;
@@ -15,6 +18,9 @@ main {
 }
 
 @theme {
+  --font-mono: "input-mono", ui-monospace, monospace;
+  --font-sans: "Inter", sans-serif;
+
   --color-accent: #0070d7;
   --color-accent-foreground: #fff;
   --color-accent-hover: #0066d6;
