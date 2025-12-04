@@ -25,6 +25,7 @@ export default function TallyForms(props: TallyFormsProps) {
       alignLeft: alignLeft ? '1' : '0',
       transparentBackground: background ? '0' : '1',
       dynamicHeight: '1',
+      formEventsForwarding: '1',
     });
 
     let url = '';
